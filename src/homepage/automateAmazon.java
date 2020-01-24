@@ -15,6 +15,8 @@ public class automateAmazon {
         driver.findElement(By.cssSelector("#twotabsearchtextbox")).sendKeys("milano cookies");
         driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
         driver.navigate().back();
+
+        //Find iphone and add to cart
         driver.findElement(By.cssSelector("#twotabsearchtextbox")).sendKeys("iphone");
         driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
         driver.findElement(By.cssSelector(iphone)).click();
@@ -22,12 +24,26 @@ public class automateAmazon {
         Thread.sleep(4000);
         driver.navigate().to(url);
 
+        //navigate to coupon
+        driver.findElement(By.cssSelector("#nav-xshop > a:nth-child(2)")).click();
+        driver.findElement(By.cssSelector("#nav-subnav > a:nth-child(2) > span")).click();
+        driver.findElement(By.cssSelector("#nav-hamburger-menu > i")).click();
+        driver.navigate().to(url);
+        driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[3]")).click();
+        Thread.sleep(3000);
 
-        driver.close();
+        //customer service
+        driver.findElement(By.xpath("//*[@id=\"helpsearch\"]")).sendKeys("cancel order");
+        driver.findElement(By.cssSelector("#helpSearchSubmit > span > input")).click();
+
+
+
+        //driver.close();
     }
     public static void navigateTo(String url){
         System.setProperty("webdriver.chrome.driver", "BrowserDriver/chromedriver");
         driver= new ChromeDriver();
         driver.navigate().to(url);
+
     }
 }
